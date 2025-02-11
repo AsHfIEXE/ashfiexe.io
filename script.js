@@ -1,31 +1,32 @@
+
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
 }
 
 // GitHub Stats Fetching
-async function fetchGitHubStats(username) {
-    const statsDiv = document.getElementById('github-stats');
-    statsDiv.innerHTML = '<p class="loading">Loading GitHub Stats...</p>'; // Initial loading message
+async function fetchGitHubStats() {
+    const username = "ashfiexe";  
+    const token = "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";  // Store securely!
 
     try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
+        const response = await fetch(`https://api.github.com/users/${username}`, {
+            headers: {
+                "Authorization": `token ${token}`
+            }
+        });
+
         if (!response.ok) {
             throw new Error(`GitHub API error: ${response.status}`);
         }
+
         const data = await response.json();
-
-        statsDiv.innerHTML = ''; // Clear loading message
-
-        // Create and append stat elements with icons
-        statsDiv.appendChild(createStatElement('fa-code-branch', `Public Repositories: ${data.public_repos}`));
-        statsDiv.appendChild(createStatElement('fa-users', `Followers: ${data.followers}`));
-        statsDiv.appendChild(createStatElement('fa-user-friends', `Following: ${data.following}`));
-
+        console.log("GitHub Stats:", data);
     } catch (error) {
         console.error("Error fetching GitHub stats:", error);
-        statsDiv.innerHTML = '<p class="error">Failed to load GitHub stats.</p>';
     }
 }
+
+fetchGitHubStats();
 
 // Helper function to create stat elements with icons
 function createStatElement(iconClass, text) {
