@@ -1,32 +1,39 @@
-
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
-}
-
-// GitHub Stats Fetching
-async function fetchGitHubStats() {
-    const username = "ashfiexe";  
-    const token = "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";  // Store securely!
-
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}`, {
-            headers: {
-                "Authorization": `token ${token}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("GitHub Stats:", data);
-    } catch (error) {
-        console.error("Error fetching GitHub stats:", error);
+    const icon = document.querySelector(".toggle-theme i"); // Select the <i> tag
+    if (document.body.classList.contains("dark-mode")) {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+    } else {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
     }
 }
 
-fetchGitHubStats();
+// GitHub Stats Fetching (No changes here)
+async function fetchGitHubStats(username) {
+    const statsDiv = document.getElementById('github-stats');
+    statsDiv.innerHTML = '<p class="loading">Loading GitHub Stats...</p>'; // Initial loading message
+
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+        }
+        const data = await response.json();
+
+        statsDiv.innerHTML = ''; // Clear loading message
+
+        // Create and append stat elements with icons
+        statsDiv.appendChild(createStatElement('fa-code-branch', `Public Repositories: ${data.public_repos}`));
+        statsDiv.appendChild(createStatElement('fa-users', `Followers: ${data.followers}`));
+        statsDiv.appendChild(createStatElement('fa-user-friends', `Following: ${data.following}`));
+
+    } catch (error) {
+        console.error("Error fetching GitHub stats:", error);
+        statsDiv.innerHTML = '<p class="error">Failed to load GitHub stats.</p>';
+    }
+}
 
 // Helper function to create stat elements with icons
 function createStatElement(iconClass, text) {
@@ -83,8 +90,6 @@ function updateButtonState() {
 //Optional: Autoscroll every 5 seconds
 setInterval(nextTestimonial, 5000);
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
@@ -127,27 +132,63 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const shapes = document.querySelectorAll(".abstract-shape");
+      //-------TESTIMONIALS----------
+      const testimonialSlider = document.getElementById('testimonials-slider');
+      const testimonials = document.querySelectorAll('.testimonial');
 
-    shapes.forEach((shape, index) => {
-        shape.style.left = `${Math.random() * 100}vw`;
-        shape.style.top = `${Math.random() * 100}vh`;
 
-        anime({
-            targets: shape,
-            translateX: [0, Math.random() * 200 - 100], // Moves randomly left and right
-            translateY: [0, Math.random() * 200 - 100], // Moves randomly up and down
-            scale: [1, Math.random() * 1.5 + 0.5], // Changes size randomly
-            opacity: [0.6, 1], // Makes it fade in/out slightly
-            duration: 4000 + Math.random() * 3000, // Randomized speed
-            easing: "easeInOutSine",
-            loop: true,
-            direction: "alternate"
+      // Function that runs and calls buttons to toggle between
+      testimonialNavButtons = document.querySelectorAll('#testimonial-nav button');
+      totalTestimonials = testimonials.length;
+
+        testimonialNavButtons.forEach((button, index) => {
+              button.disabled = (index === 0)
+          });
+      let testimonialIndex = 0;
+      const updateTestimonialSlider = () => {
+          testimonialSlider.style.transform = `translateX(-${testimonialIndex * (100 / totalTestimonials)}%)`;
+          testimonialNavButtons.forEach((button, index) => {
+              button.disabled = (index === testimonialIndex)
+          });
+      }
+
+      nextTestimonial = () => { //No error and const, let variables
+          testimonialIndex = (testimonialIndex + 1) % totalTestimonials;
+          updateTestimonialSlider();
+      };
+
+      prevTestimonial = () => {
+          testimonialIndex = (testimonialIndex - 1 + totalTestimonials) % totalTestimonials;
+          updateTestimonialSlider();
+      };
+    // Assigning event listeners to the buttons
+     if(testimonialNavButtons[0]) // Make sure that functions are working
+     {
+          testimonialNavButtons[0].addEventListener('click', prevTestimonial);
+          testimonialNavButtons[1].addEventListener('click', nextTestimonial);
+      }
+  //-------END TESTIMONIALS----------
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("nav"); // Select the <nav> element
+
+    // Check if menuToggle and navLinks actually exist!  Important for debugging.
+    if (!menuToggle || !navLinks) {
+        console.error("Error: Could not find .menu-toggle or nav elements.  Check your HTML.");
+        return; // Stop execution if elements are missing
+    }
+
+    // Add click event to menu-toggle to show menu
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+
+      // Close the menu when a navigation link is clicked
+    const navLinksList = document.querySelectorAll('nav a');
+     navLinksList.forEach(link => {
+     link.addEventListener('click', () => {
+            navLinks.classList.remove('active'); // Remove 'active'
         });
     });
 });
-
-  
-  

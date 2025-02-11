@@ -11,9 +11,11 @@
 </head>
 <body>
     <header>
-      
-        <button class="toggle-theme" onclick="toggleTheme()">Change Appearance</button>
-        <nav>
+        <button class="toggle-theme" onclick="toggleTheme()">
+            <i class="fas fa-sun"></i>
+            <span class="toggle-text"></span>
+        </button>
+        <nav class = "nav-links">  <!-- Add class="nav-links" HERE -->
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
@@ -21,6 +23,9 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
         </nav>
+         <div class="menu-toggle">
+                <i class="fas fa-bars"></i> <!-- Hamburger menu icon -->
+            </div>
     </header>
     <section id="about">
         <div class="hero">
