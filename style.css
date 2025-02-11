@@ -35,7 +35,7 @@ section {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;       /* Make sure images don't stretch*/
-  border: 3px solid #ff9800;   /* Add a border (your accent color) */
+  border: 3px solid #ca9f8e;   /* Add a border (your accent color) */
   margin-top: 20px;
 
 }
@@ -69,10 +69,8 @@ section {
   margin-bottom: 10px;
 }
 
-#about .hero p {
-  font-size: 1.2em;            /* Subtitle font size */
-  color: #ccc;               /* Lighter subtitle color */
-}
+
+
 
 
 
@@ -545,7 +543,7 @@ section {
 
 #social-links .social-icons a {
   text-decoration: none;
-  color: #c09a9a;
+  color: #cc8181;
   font-size: 2.5em;
   transition: color 0.3s ease, transform 0.2s ease;
 }
@@ -556,7 +554,7 @@ section {
 }
 
 .dark-mode #social-links .social-icons a {
-  color: #eee;
+  color: #7e4e4e;
 }
 
 footer {

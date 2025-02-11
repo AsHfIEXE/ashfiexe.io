@@ -10,30 +10,42 @@ function toggleTheme() {
     }
 }
 
-// GitHub Stats Fetching (No changes here)
-async function fetchGitHubStats(username) {
+async function fetchGitHubStats(ashfiexe) {
     const statsDiv = document.getElementById('github-stats');
-    statsDiv.innerHTML = '<p class="loading">Loading GitHub Stats...</p>'; // Initial loading message
+    statsDiv.innerHTML = '<p class="loading">Loading GitHub Stats...</p>'; 
 
     try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
-        }
-        const data = await response.json();
+        // Use AllOrigins proxy to bypass GitHub rate limits
+        const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.github.com/users/${ashfiexe}`)}`;
+        const response = await fetch(url);
 
-        statsDiv.innerHTML = ''; // Clear loading message
+        if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
 
-        // Create and append stat elements with icons
+        const json = await response.json();
+        const data = JSON.parse(json.contents); // Extract actual GitHub data
+
+        statsDiv.innerHTML = ''; 
+
         statsDiv.appendChild(createStatElement('fa-code-branch', `Public Repositories: ${data.public_repos}`));
         statsDiv.appendChild(createStatElement('fa-users', `Followers: ${data.followers}`));
         statsDiv.appendChild(createStatElement('fa-user-friends', `Following: ${data.following}`));
 
     } catch (error) {
-        console.error("Error fetching GitHub stats:", error);
-        statsDiv.innerHTML = '<p class="error">Failed to load GitHub stats.</p>';
+        console.error("Error fetching GitHub stats:", error.message);
+        statsDiv.innerHTML = `<p class="error">${error.message}</p>`;
     }
 }
+
+
+
+// Function to create stat elements with Font Awesome icons
+function createStatElement(iconClass, text) {
+    const statDiv = document.createElement('div');
+    statDiv.classList.add('github-stat');
+    statDiv.innerHTML = `<i class="fas ${iconClass}"></i> ${text}`;
+    return statDiv;
+}
+
 
 // Helper function to create stat elements with icons
 function createStatElement(iconClass, text) {
