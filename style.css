@@ -1,33 +1,36 @@
 /* General Styling */
 body {
-  background-color: #121212; /* Dark background */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
   color: #eee;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden;  /* Prevent horizontal scrollbar */
   transition: background 0.5s ease;
-  font-family: 'Poppins', sans-serif; /* Consistent font */
 }
 
+.dark-mode {
+background-color: #f5f5f5;
+color: #333;
+}
 /* Sections (General) */
 section {
   padding: 40px 20px; /* Consistent padding for sections */
   margin-bottom: 40px;   /* Spacing between sections */
 }
 
-/* Dark Mode */
-.dark-mode {
-  background-color: #f5f5f5;
-  color: #333;
-}
-
 /* About Me Section */
 #about .hero {
-  display: flex;                /* Use flexbox for layout */
-  align-items: flex-start;        /* Align items to the start (top) */
-  gap: 20px;                  /* Spacing between image and text */
-  padding: 0;                /* Reduced padding */
-  background: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: linear-gradient(45deg, #212121, #181818);
+  border-radius: 12px;
   margin-bottom: 30px;
+  color: #eee;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #about .hero img {                 /* Style the profile picture */
@@ -35,7 +38,7 @@ section {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;       /* Make sure images don't stretch*/
-  border: 3px solid #ca9f8e;   /* Add a border (your accent color) */
+  border: 3px solid a#b47964;   /* Add a border (your accent color) */
   margin-top: 20px;
 
 }
@@ -622,10 +625,11 @@ footer {
   100% { transform: scale(1.2); }
 }
 
-/* Header */
+/* --- Header & Navigation --- */
+
 header {
-  background-color: #161414;
-  color: #333;
+  background-color: #212121;
+  color: #eee;
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -635,125 +639,154 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    cursor: pointer;
+    font-size: 1.8em;
+    color: #eee;
+     /*Ensure that the menu appears in front of other content*/
+     position: absolute;
+     top: 20px;
+     right: 20px;
+     z-index: 1000;
+}
+
+nav {
+    display: flex;        /* Use flexbox for layout */
+    align-items: center;  /* Vertically center links */
+    gap: 30px;            /* Spacing between links */
+    margin-left: auto;    /* Push nav to the right (important!)*/
+}
+
+nav ul {
+    list-style: none;  /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex;    /* Horizontal layout by default */
+    align-items: center; /* Vertically center items */
+}
+
+nav li {
+    /* No specific styles needed for the list items in the default (desktop) layout */
 }
 .toggle-theme {
-background-color: #ffb300;
-color: #333;
-border: none;
-padding: 8px 12px;
-border-radius: 8px;
-cursor: pointer;
-transition: background 0.3s ease;
-font-size: 0.9em;
+  background-color: #ffb300; /* Lighter orange for button */
+  color: #333;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  margin-right: 10px; /* Add margin to separate button */
+  display: flex;         /* Use flexbox to arrange icon and text */
+  align-items: center; /* Center them vertically */
 }
+
+.toggle-theme i {
+  margin-right: 5px;    /* Space between icon and text */
+}
+
+
+/* Hover Effect */
 .toggle-theme:hover {
-background-color: #ffa000;
+  background-color: #ffa000;
 }
-.dark-mode .toggle-theme {
-background-color: #ff9800;
-color: white;
-}
-nav {
-display: flex;
-justify-content: flex-end;
-gap: 30px;
-padding: 0 20px;
-background: none;
-margin-left: auto;
-align-items: center;
-height: 70px;
-}
-
-nav a {
-color: #f5ecec;
-text-decoration: none;
-transition: color 0.3s ease, transform 0.3s ease;
-font-size: 1.1em;
-font-weight: 500;
-padding: 8px 12px;
-border-radius: 5px;
-border: 2px solid transparent;
-}
-
-nav a:hover {
-color: #ff9800;
-transform: translateY(-3px);
-border-color: #ff9800;
-}
-
-.dark-mode nav a {
-color: #333;
-border-color: transparent;
-}
-
-.dark-mode nav a:hover {
-color: #ff9800;
-border-color: #ff9800;
-}
-header.scrolled {
-  background-color: rgba(33, 33, 33, 0.9);
-  backdrop-filter: blur(5px);
-}
-
+/* Dark Mode Styles */
 .dark-mode header {
   background-color: #f0f0f0;
   color: #333;
 }
 
-.dark-mode header.scrolled {
-  background-color: rgba(240, 240, 240, 0.9);
+/* Dark mode: hide sun, SHOW moon */
+
+.dark-mode .toggle-theme .fa-sun {
+  display: none;  /* Hide sun in dark mode */
 }
-/* Menu Toggle Button (Hamburger Icon) */
-.menu-toggle {
-  display: none; /* Hide by default on larger screens */
-  font-size: 1.8em; /* Adjust the size of the icon */
-  color: #eee;
-  cursor: pointer;
-  z-index: 101;  /* Ensure it's above the nav on small screens */
+.dark-mode .toggle-theme .fa-moon {
+  display: inline-block;  /* Show moon in dark mode */
 }
 
-/* Initially Hide Navigation on Small Screens */
+.dark-mode .toggle-theme {
+   background-color: #ff9800; /* original orange */
+   color: white;
+}
+
+.dark-mode .toggle-theme {
+   background-color: #ff9800; /* original orange */
+   color: white;
+}
+
+.dark-mode .toggle-theme {
+  background-color: #ff9800;
+  color: white;
+}
+.dark-mode header.scrolled {
+    background-color: rgba(240, 240, 240, 0.9);
+}
+nav a {
+    color: #eee;       /* Default link color */
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: color 0.3s ease, transform 0.2s ease, border-color 0.3s ease; /* Smooth transitions */
+    border: 2px solid transparent;  /* For hover effect */
+}
+
+nav a:hover {
+    color: #ff9800;   /* Hover color */
+    transform: translateY(-3px);  /* Slight lift */
+     border-color: #ff9800;
+}
+
+.dark-mode nav a {
+    color: #333;  /* Dark mode link color */
+    border-color: transparent;
+}
+.dark-mode nav a:hover {
+    color: #ff9800;  /* Hover color still stands out in dark mode */
+    border-color: #ff9800;
+}
+
+/* --- Mobile Styles (Media Query) --- */
 
 @media (max-width: 768px) {
-  .menu-toggle {
-      display: block; /* Show the menu toggle button */
-  }
-    
-  nav {
-      display: none;
-      flex-direction: column;
-      /* Stack items vertically */
-      position: absolute;
-      top: 70px;
-      /* Position below the header */
-      left: 0;
-      width: 100%;
-      background-color: #212121;
-      /* Background for nav on small screens */
-      padding: 20px; /* Padding within nav on small screens */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      /* Add a shadow to the nav */
-      
-  }
-  .active {
-    display:flex;
-  }
-  nav a {
-    margin: 10px 0; /* Space between links */
-    text-align: left; /* Center the links */
-    padding: 15px;
-    border-bottom: 1px solid #333; /* Add a border */
-  }
+    .menu-toggle {
+        display: block;  /* Show the hamburger icon on small screens */
+    }
 
-  nav a:last-child {
-    border-bottom: none;  /* Remove the last border */
-  }
-  .toggle-theme {
-      margin: 0px;
-  }
+    header nav {  /* Target the <nav> element specifically */
+        display: none;  /* Hide by default on small screens */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute;
+        top: 70px;        /* Position below the header (adjust as needed) */
+        left: 0;
+        width: 100%;
+        background-color: #212121;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
 
-  nav {
-    justify-content: center;
-  }
+    header nav.active {  /* Use the correct class name here */
+        display: flex;  /* Show the navigation when 'active' class is present*/
+    }
+
+     nav a {
+      margin: 10px 0; /* Space between links */
+      text-align: left; /* Center the links */
+      padding: 15px;
+      border-bottom: 1px solid #333; /* Add a border */
+    }
+
+    nav a:last-child {
+       border-bottom: none;  /* Remove the last border */
+    }
 }
-
