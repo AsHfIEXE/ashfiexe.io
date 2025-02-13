@@ -624,9 +624,7 @@ footer {
   0% { transform: scale(1); }
   100% { transform: scale(1.2); }
 }
-
-/* --- Header & Navigation --- */
-
+/* --- Header --- */
 header {
   background-color: #212121;
   color: #eee;
@@ -643,39 +641,60 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-.menu-toggle {
-    display: none; /* Hidden by default on larger screens */
-    cursor: pointer;
-    font-size: 1.8em;
-    color: #eee;
-     /*Ensure that the menu appears in front of other content*/
-     position: absolute;
-     top: 20px;
-     right: 20px;
-     z-index: 1000;
+/* --- Logo --- */
+.logo img {
+  max-height: 50px; /* Adjust as needed */
+  width: auto;
+  vertical-align: middle;
 }
 
+/* --- Navigation (Desktop) --- */
 nav {
-    display: flex;        /* Use flexbox for layout */
-    align-items: center;  /* Vertically center links */
-    gap: 30px;            /* Spacing between links */
-    margin-left: auto;    /* Push nav to the right (important!)*/
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Reduced gap slightly */
+  margin-left: auto; /* Push nav to the right*/
 }
 
 nav ul {
-    list-style: none;  /* Remove bullet points */
-    margin: 0;
-    padding: 0;
-    display: flex;    /* Horizontal layout by default */
-    align-items: center; /* Vertically center items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Reduced gap slightly */
 }
 
-nav li {
-    /* No specific styles needed for the list items in the default (desktop) layout */
+nav a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 2px solid transparent;
 }
+
+nav a:hover {
+  color: #ff9800;
+  transform: translateY(-3px);
+  border-color: #ff9800;
+}
+
+.dark-mode nav a {
+  color: #333;
+  border-color: transparent;
+}
+
+.dark-mode nav a:hover {
+  color: #ff9800;
+  border-color: #ff9800;
+}
+
+/* --- Toggle Theme Button --- */
+
 .toggle-theme {
-  background-color: #ffb300; /* Lighter orange for button */
+  background-color: #ffb300;
   color: #333;
   border: none;
   padding: 8px 12px;
@@ -683,110 +702,154 @@ nav li {
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-size: 0.9em;
-  margin-right: 10px; /* Add margin to separate button */
-  display: flex;         /* Use flexbox to arrange icon and text */
+  display: flex; /* Use flexbox to arrange icon and text */
   align-items: center; /* Center them vertically */
+  gap: 8px;         /* Add a little gap */
+  margin-left: auto; /*Push to right*/
 }
 
+/* Style the icon within the button */
 .toggle-theme i {
   margin-right: 5px;    /* Space between icon and text */
 }
 
+/* Hide moon by default, show sun */
+.toggle-theme .fa-sun { display: inline-block; }
+.toggle-theme .fa-moon { display: none; }
 
-/* Hover Effect */
+/* Dark mode: hide sun, show moon */
+.dark-mode .toggle-theme .fa-sun { display: none; }
+.dark-mode .toggle-theme .fa-moon { display: inline-block; }
+
 .toggle-theme:hover {
   background-color: #ffa000;
 }
-/* Dark Mode Styles */
+
+/* Dark mode toggle button color */
+.dark-mode .toggle-theme {
+  background-color: #ff9800;
+  color: white;
+}
 .dark-mode header {
   background-color: #f0f0f0;
   color: #333;
 }
 
-/* Dark mode: hide sun, SHOW moon */
-
-.dark-mode .toggle-theme .fa-sun {
-  display: none;  /* Hide sun in dark mode */
-}
-.dark-mode .toggle-theme .fa-moon {
-  display: inline-block;  /* Show moon in dark mode */
-}
-
-.dark-mode .toggle-theme {
-   background-color: #ff9800; /* original orange */
-   color: white;
-}
-
-.dark-mode .toggle-theme {
-   background-color: #ff9800; /* original orange */
-   color: white;
-}
-
-.dark-mode .toggle-theme {
-  background-color: #ff9800;
-  color: white;
-}
-.dark-mode header.scrolled {
-    background-color: rgba(240, 240, 240, 0.9);
-}
-nav a {
-    color: #eee;       /* Default link color */
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: color 0.3s ease, transform 0.2s ease, border-color 0.3s ease; /* Smooth transitions */
-    border: 2px solid transparent;  /* For hover effect */
-}
-
-nav a:hover {
-    color: #ff9800;   /* Hover color */
-    transform: translateY(-3px);  /* Slight lift */
-     border-color: #ff9800;
-}
-
-.dark-mode nav a {
-    color: #333;  /* Dark mode link color */
-    border-color: transparent;
-}
-.dark-mode nav a:hover {
-    color: #ff9800;  /* Hover color still stands out in dark mode */
-    border-color: #ff9800;
-}
-
 /* --- Mobile Styles (Media Query) --- */
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;  /* Show the hamburger icon on small screens */
-    }
-
-    header nav {  /* Target the <nav> element specifically */
-        display: none;  /* Hide by default on small screens */
-        flex-direction: column; /* Stack links vertically */
-        position: absolute;
-        top: 70px;        /* Position below the header (adjust as needed) */
-        left: 0;
-        width: 100%;
-        background-color: #212121;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-    }
-
-    header nav.active {  /* Use the correct class name here */
-        display: flex;  /* Show the navigation when 'active' class is present*/
-    }
-
-     nav a {
-      margin: 10px 0; /* Space between links */
-      text-align: left; /* Center the links */
-      padding: 15px;
-      border-bottom: 1px solid #333; /* Add a border */
-    }
-
-    nav a:last-child {
-       border-bottom: none;  /* Remove the last border */
-    }
+.menu-toggle {
+  display: none; /* Hidden by default on larger screens */
+  cursor: pointer;
+  font-size: 1.8em;
+  color: #eee;
+  margin-right: 10px; /* Keep consistent with desktop */
+  z-index: 101;  /* Ensure menu-toggle is above other content */
+  position: absolute; /* Position absolutely within header */
+  top: 50%;       /* Center vertically */
+  right: 20px;   /* Position from the right edge */
+  transform: translateY(-50%); /* Center vertically */
 }
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;  /* Show the hamburger icon on small screens */
+     /* Position absolutely within header */
+  }
+
+  header nav {
+    display: none;  /* Hide by default on small screens */
+    flex-direction: column; /* Stack links vertically */
+    position: absolute;
+    top: 60px;        /* Dynamic positioning based on header */
+    left: 0;
+    width: 100%;
+    background-color: #212121;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+    header nav ul {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  header nav li {
+      width: 100%;
+      text-align: center; /* Center-align the links */
+      margin: 10px 0;
+
+  }
+
+  header nav a {
+    margin: 10px 0; /* Space between links */
+    text-align: left; /* Center the links */
+    padding: 15px;
+    border-bottom: 1px solid #333; /* Add a border */
+     display: block; /* Required for full width */
+      width: 100%;
+      box-sizing: border-box; /* Include padding in width */
+  }
+
+  nav a:last-child {
+     border-bottom: none;  /* Remove the last border */
+  }
+
+  header nav.active {
+      display: flex;
+  }
+
+  /* Hide toggle button on mobile */
+  .toggle-theme {
+      display: none;
+  }
+}
+/* --- Cool Scrollbar Styling --- */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;  /* Slimmer scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #222;       /* Darker track for better contrast */
+  border-radius: 10px;     /* Smooth rounded corners */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Subtle inner shadow */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff9800, #ff5e00); /* Gradient effect */
+  border-radius: 10px;  
+  border: 2px solid #222;   /* Creates a border effect */
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ffb84d, #ff7f4d); /* Brighter gradient on hover */
+  transform: scale(1.1);  /* Slight enlargement for an interactive feel */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ff9800 #222; /* thumb color, track color */
+}
+
+/* Dark Mode Enhancements */
+.dark-mode ::-webkit-scrollbar-track {
+  background: #444; /* Slightly lighter track in dark mode */
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #aaa, #888); /* Softer gradient */
+  border-color: #444;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ccc, #999);
+  transform: scale(1.1);
+}
+
+.dark-mode { /* Firefox dark mode */
+  scrollbar-color: #aaa #444;
+}
+
