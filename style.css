@@ -625,8 +625,6 @@ footer {
   100% { transform: scale(1.2); }
 }
 /* --- Header --- */
-
-/* --- Header --- */
 header {
   background-color: #212121;
   color: #eee;
@@ -637,7 +635,7 @@ header {
   width: 100%;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribute space */
   align-items: center;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -645,7 +643,7 @@ header {
 
 /* --- Logo --- */
 .logo img {
-  max-height: 50px; /* Adjust as needed */
+  max-height: 70px; /* Adjust as needed */
   width: auto;
   vertical-align: middle;
 }
@@ -654,8 +652,8 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 20px; /* Reduced gap slightly */
-  margin-left: auto; /* Push nav to the right*/
+  gap: 30px;
+  margin-left: auto; /* Push nav to the RIGHT */
 }
 
 nav ul {
@@ -663,7 +661,7 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 20px; /* Reduced gap slightly */
+  gap: 30px;
 }
 
 nav a {
@@ -696,73 +694,60 @@ nav a:hover {
 /* --- Toggle Theme Button --- */
 
 .toggle-theme {
-  background-color: #ffb300;
+  background-color: #ffb300; /* Lighter orange for button */
   color: #333;
   border: none;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
   font-size: 0.9em;
-  display: flex; /* Use flexbox to arrange icon and text */
-  align-items: center; /* Center them vertically */
-  gap: 8px;         /* Add a little gap */
-  margin-left: auto; /*Push to right*/
+  position: absolute; /* Position absolutely within header */
+  top: 50%;       /* Center vertically */
+  right: 20px;     /* Position from the right */
+  transform: translateY(-50%); /* Center vertically */
 }
 
-/* Style the icon within the button */
-.toggle-theme i {
-  margin-right: 5px;    /* Space between icon and text */
-}
-
-/* Hide moon by default, show sun */
-.toggle-theme .fa-sun { display: inline-block; }
-.toggle-theme .fa-moon { display: none; }
-
-/* Dark mode: hide sun, show moon */
-.dark-mode .toggle-theme .fa-sun { display: none; }
-.dark-mode .toggle-theme .fa-moon { display: inline-block; }
 
 .toggle-theme:hover {
   background-color: #ffa000;
 }
 
-/* Dark mode toggle button color */
 .dark-mode .toggle-theme {
-  background-color: #ff9800;
-  color: white;
-}
-.dark-mode header {
-  background-color: #f0f0f0;
-  color: #333;
+   background-color: #ff9800; /* original orange */
+   color: white;
 }
 
 /* --- Mobile Styles (Media Query) --- */
 
 .menu-toggle {
-  display: none; /* Hidden by default on larger screens */
+  display: none; /* Hidden by default */
   cursor: pointer;
   font-size: 1.8em;
   color: #eee;
-  margin-right: 10px; /* Keep consistent with desktop */
-  z-index: 101;  /* Ensure menu-toggle is above other content */
+  z-index: 101;   /* Above other header content */
   position: absolute; /* Position absolutely within header */
   top: 50%;       /* Center vertically */
-  right: 20px;   /* Position from the right edge */
+  right: 10px;     /* Position from the right */
   transform: translateY(-50%); /* Center vertically */
+}
+
+/* Dark mode hamburger icon */
+.dark-mode .menu-toggle {
+color: #333;
 }
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;  /* Show the hamburger icon on small screens */
-     /* Position absolutely within header */
+      display: block;   /* Show the menu icon */
+      padding-right: 10%;
   }
 
-  header nav {
-    display: none;  /* Hide by default on small screens */
-    flex-direction: column; /* Stack links vertically */
+ header nav {
+    display: none;  
+    flex-direction: column;
     position: absolute;
-    top: 60px;        /* Dynamic positioning based on header */
+    top: 60px;    /* Corrected position! */
     left: 0;
     width: 100%;
     background-color: #212121;
@@ -770,34 +755,31 @@ nav a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
   }
-    header nav ul {
+
+  header nav ul {
       flex-direction: column;
       width: 100%;
+      align-items: stretch; /* Stretch items to full width */
   }
 
   header nav li {
       width: 100%;
-      text-align: center; /* Center-align the links */
-      margin: 10px 0;
-
+      text-align: center; /* Center-align links */
   }
 
   header nav a {
-    margin: 10px 0; /* Space between links */
-    text-align: left; /* Center the links */
-    padding: 15px;
-    border-bottom: 1px solid #333; /* Add a border */
-     display: block; /* Required for full width */
-      width: 100%;
-      box-sizing: border-box; /* Include padding in width */
+      display: block;  /* Make links full-width */
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      text-align: left; /* Align text left */
   }
 
-  nav a:last-child {
-     border-bottom: none;  /* Remove the last border */
+  header nav a:last-child {
+      border-bottom: none; /* Remove border from last link */
   }
 
   header nav.active {
-      display: flex;
+      display: flex; /* Show when 'active' */
   }
 
   /* Hide toggle button on mobile */
@@ -805,61 +787,173 @@ nav a:hover {
       display: none;
   }
 }
+
+.toggle-theme:hover {
+  background-color: #ffa000;
+    color:rgb(7, 5, 5);;
+}
+
 header.scrolled {
 background-color: rgba(33, 33, 33, 0.9);
 backdrop-filter: blur(5px);
 }
-.dark-mode header.scrolled{
-background-color: rgba(240, 240, 240, 0.9);
+
+.dark-mode header {
+background-color: #f0f0f0;
+color: #333;
 }
+.dark-mode header.scrolled {
+  background-color: rgba(240, 240, 240, 0.9);
+}
+/* --- Cool, Sleek Scrollbar Styling --- */
 
-/* --- Cool Scrollbar Styling --- */
-
-/* For Webkit browsers (Chrome, Safari, Edge) */
+/* Webkit Browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-  width: 10px;  /* Slimmer scrollbar */
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #222;       /* Darker track for better contrast */
-  border-radius: 10px;     /* Smooth rounded corners */
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Subtle inner shadow */
+  background: #1a1a1a; /* Darker background */
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #ff9800, #ff5e00); /* Gradient effect */
-  border-radius: 10px;  
-  border: 2px solid #222;   /* Creates a border effect */
+  background: linear-gradient(45deg, #ff6b6b, #ff9800);
+  border-radius: 10px;
+  border: 2px solid #1a1a1a;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
   transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #ffb84d, #ff7f4d); /* Brighter gradient on hover */
-  transform: scale(1.1);  /* Slight enlargement for an interactive feel */
+  background: linear-gradient(45deg, #ff4d4d, #ff7f00);
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 107, 107, 0.8);
 }
 
-/* For Firefox */
+/* Firefox Scrollbar */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #ff9800 #222; /* thumb color, track color */
+  scrollbar-color: #ff6b6b #1a1a1a;
 }
 
 /* Dark Mode Enhancements */
 .dark-mode ::-webkit-scrollbar-track {
-  background: #444; /* Slightly lighter track in dark mode */
+  background: #333;
 }
 
 .dark-mode ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #aaa, #888); /* Softer gradient */
-  border-color: #444;
+  background: linear-gradient(45deg, #888, #555);
+  border-color: #333;
 }
 
 .dark-mode ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #ccc, #999);
+  background: linear-gradient(45deg, #aaa, #777);
   transform: scale(1.1);
 }
 
-.dark-mode { /* Firefox dark mode */
-  scrollbar-color: #aaa #444;
+.dark-mode {
+  scrollbar-color: #888 #333;
+}
+
+/* --- 🚀 Futuristic Progress Bar --- */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #ddbea2, #ddbea2, #ddbea2);
+    z-index: 9999;
+    box-shadow: 0 0 10px rgba(255, 118, 137, 0.8);
+    transition: width 0.15s ease-in-out;
+}
+
+/* Glowing Effect */
+@keyframes glowing {
+  0% { box-shadow: 0 0 10px rgba(255, 118, 137, 0.8); }
+  50% { box-shadow: 0 0 20px rgba(255, 118, 137, 1); }
+  100% { box-shadow: 0 0 10px rgba(255, 118, 137, 0.8); }
+}
+
+#progress-bar::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent);
+    animation: glowing 1.5s infinite alternate;
+}
+
+/* Smooth Loading Animation */
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* When the page loads */
+body.loading #progress-bar {
+    animation: progressFill 3s linear;
+}
+
+
+ #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff7eb3, #ff758c);
+    z-index: 9999;
+    transition: width 0.1s ease;
+  }
+
+#visitor-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Light glass effect */
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Soft neon glow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hover effect for more interaction */
+#visitor-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+/* Add a glowing icon next to the visitor count */
+#visitor-icon {
+    width: 20px;
+    height: 20px;
+    background: cyan;
+    border-radius: 50%;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Animation to make the icon pulse */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px cyan; }
+    50% { transform: scale(1.2); box-shadow: 0 0 15px cyan; }
+    100% { transform: scale(1); box-shadow: 0 0 10px cyan; }
+}
+
+#visitor-icon {
+    animation: pulse 2s infinite;
 }
 

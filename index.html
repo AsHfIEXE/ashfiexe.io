@@ -1,66 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!-- SEO Meta Tags -->
-        <title>Salehin Ashfi | Writer & Bug Bounty Hunter</title>
-        <meta name="description" content="Writer, cybersecurity researcher, and bug bounty hunter. Explore my books, cybersecurity projects, and ethical hacking research.">
-        <meta name="keywords" content="Salehin Ashfi, writer, bug bounty, cybersecurity, ethical hacking, books, AI, infosec">
-        <meta name="author" content="Salehin Ashfi">
-        <meta name="robots" content="index, follow">
-        
-        <!-- Open Graph (for Social Media) -->
-        <meta property="og:title" content="Salehin Ashfi | Writer & Bug Bounty Hunter">
-        <meta property="og:description" content="Explore my books, cybersecurity research, and ethical hacking insights.">
-        <meta property="og:image" content="https://ashfi.wauze.com/logo.jpg">
-        <meta property="og:url" content="https://ashfi.wauze.com">
-        <meta property="og:type" content="website">
-        
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Salehin Ashfi | Writer & Bug Bounty Hunter">
-        <meta name="twitter:description" content="Discover my books, cybersecurity projects, and ethical hacking journey.">
-        <meta name="twitter:image" content="https://ashfi.wauze.com/your-thumbnail-image.jpg">
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="favicon.png">
-        
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
-        
-        <!-- CSS -->
-        <link rel="stylesheet" href="style.css">
-        
-        <!-- FontAwesome Icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-        
-        <!-- EmailJS -->
-        <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    </head>
-    <body>
-        <header>
-          <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <!-- SEO Meta Tags -->
+    <title>Salehin Ashfi | Writer & Cybersecurity Researcher</title>
+    <meta name="description" content="Writer, cybersecurity researcher, and bug bounty hunter. Explore my books, cybersecurity projects, and ethical hacking research.">
+    <meta name="keywords" content="Salehin Ashfi, writer, bug bounty, cybersecurity, ethical hacking, books, AI, infosec">
+    <meta name="author" content="Salehin Ashfi">
+    <meta name="robots" content="index, follow">
     
-          <nav>
-            <ul class = "nav-links">
-              <li><a href="#about">About</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#books">Books</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li> <button class="toggle-theme" onclick="toggleTheme()">
-                <i class="fas fa-sun"></i>
-                
-            </button></li>
-              </ul>
-          </nav>
-           
-        </header>
+    <!-- Open Graph (for Social Media) -->
+    <meta property="og:title" content="Salehin Ashfi | Writer & Cybersecurity Researcher">
+    <meta property="og:description" content="Explore my books, cybersecurity research, and ethical hacking insights.">
+    <meta property="og:image" content="http://www.salehinashfi.rf.gd/logo.png">
+    <meta property="og:url" content="http://www.salehinashfi.rf.gd/">
+    <meta property="og:type" content="website">
     
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Salehin Ashfi | Writer & Cybersecurity Researcher">
+    <meta name="twitter:description" content="Discover my books, cybersecurity projects, and ethical hacking journey.">
+    <meta name="twitter:image" content="http://www.salehinashfi.rf.gd/thumbnail.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="http://www.salehinashfi.rf.gd/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- EmailJS & Particles.js -->
+    <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+</head>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="Logo"></a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <script>
+                        function toggleMenu() {
+                            document.querySelector('.nav-links').classList.toggle('active');
+                        }
+                    </script>
+                       
+                </li>
+            </ul>
+        </nav>
+    </header>
     <section id="about">
+
+        <div>
+            <button class="toggle-theme" onclick="toggleTheme()">
+                <i class="fas fa-sun"></i>  <!-- Sun icon -->
+                <span class="toggle-text">    </span>
+            </button>
+        </div>
+
             <div class="hero">
                 <img src="IMG_20250130_130338_405[1].webp" alt="Your Profile Picture">
                 <div class="hero-text">
@@ -72,15 +88,14 @@
             <p>I am a writer and cybersecurity researcher, exploring the intersection of technology and storytelling. As a bug bounty hunter, I specialize in ethical hacking, web security, and exploit development, identifying vulnerabilities in major platforms, including Meta’s bug bounty program. My work focuses on securing digital systems and uncovering hidden flaws, making the online world safer.</p>
             <p>Beyond cybersecurity, I am a published author with a deep fascination for time, existence, and the human psyche. My stories blend sci-fi, mystery, and psychological depth, creating thought-provoking narratives that challenge perceptions of reality. I thrive on uncovering hidden vulnerabilities—both in systems and in stories—pushing the boundaries of technology and fiction alike.</p>
         </section>
-    
-    <div class="animated-objects">
-        <div class="abstract-shape"></div>
-        <div class="abstract-shape"></div>
-        <div class="abstract-shape"></div>
-    </div>
-    <div class="blob"></div> </div>
-</section>
 
+<div id="visitor-container">
+    <div id="visitor-icon"></div>
+    <span>Total Visits: <strong id="visitor-count">Loading...</strong></span>
+</div>
+
+ <script src="script.js"></script>
+  <script src="visitor-counter.js" defer></script>
     
         </section>
         <section id="skills">
@@ -119,7 +134,29 @@
 
                 </ul>
             </div>
-        
+        <div id="progress-bar"></div>
+
+<style>
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff7eb3, #ff758c);
+    z-index: 9999;
+    transition: width 0.1s ease;
+  }
+</style>
+
+<script>
+  window.onscroll = function () {
+    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById("progress-bar").style.width = progress + "%";
+  };
+</script>
             
             <div class="skill-section">
                 <h3><i class="fas fa-users"></i> Soft Skills</h3>
@@ -254,7 +291,9 @@
             <p>Made with <span class="heart">❤</span> using HTML, CSS, and JavaScript</p>
         </div>
     </footer>
-    
+
+   
+     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="script.js"></script>
     <script type='text/javascript' src='//offenceseemshy.com/6a/82/df/6a82df5432cabfd7135eaa779619f6f9.js'></script>
