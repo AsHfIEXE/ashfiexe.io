@@ -13,6 +13,7 @@
   --glass-bg: rgba(30, 30, 30, 0.3);
   --glass-blur: blur(20px);
   --border-glow: 0 0 10px rgba(0, 123, 255, 0.5);
+  --glass-opacity: 0.95;
 }
 
 /* Dark Mode Overrides */
@@ -39,6 +40,7 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Dynamic Background Animation */
@@ -80,7 +82,7 @@ header {
 }
 
 header.scrolled {
-  background: var(--glass-bg);
+  background: rgba(30, 30, 30, 0.5);
   box-shadow: var(--card-shadow);
   padding: 12px 32px;
 }
@@ -91,7 +93,7 @@ header.scrolled {
 }
 
 .dark-mode header.scrolled {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Logo */
@@ -108,9 +110,7 @@ header.scrolled {
 
 /* Navigation */
 nav {
-  flex-grow: 1;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
@@ -164,7 +164,6 @@ nav a:hover::after {
   display: flex;
   align-items: center;
   gap: 12px;
-  order: 2;
 }
 
 /* Menu Toggle */
@@ -173,12 +172,10 @@ nav a:hover::after {
   font-size: 1.6rem;
   color: var(--text-color);
   cursor: pointer;
-  z-index: 2100;
   background: none;
   border: none;
   padding: 8px;
   transition: var(--transition);
-  order: 3;
 }
 
 .menu-toggle:hover {
@@ -235,7 +232,7 @@ nav a:hover::after {
   position: fixed;
   top: 80px;
   right: 32px;
-  background: var(--glass-bg);
+  background: rgba(30, 30, 30, var(--glass-opacity));
   backdrop-filter: var(--glass-blur);
   border-radius: 12px;
   box-shadow: var(--card-shadow);
@@ -249,6 +246,10 @@ nav a:hover::after {
   z-index: 1999;
 }
 
+.dark-mode .hire-me-dropdown {
+  background: rgba(255, 255, 255, var(--glass-opacity));
+}
+
 .hire-me-dropdown.active {
   display: flex;
   opacity: 1;
@@ -260,16 +261,23 @@ nav a:hover::after {
   align-items: center;
   gap: 12px;
   padding: 14px 24px;
-  color: var(--text-color);
+  color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   transition: var(--transition);
+}
+
+.dark-mode .hire-option {
+  color: #000000;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .hire-option:hover {
   background: var(--primary-color);
   color: #fff;
+  text-shadow: none;
 }
 
 .hire-option i {
@@ -278,10 +286,6 @@ nav a:hover::after {
 
 .hire-option:not(:last-child) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.dark-mode .hire-option {
-  color: var(--text-color);
 }
 
 /* Theme Toggle */
@@ -319,15 +323,20 @@ nav a:hover::after {
 
 /* Stats Section */
 #stats {
-  padding: 80px 24px;
+  padding: 80px 16px;
   background: var(--gradient-bg);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 #stats h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   position: relative;
 }
 
@@ -344,9 +353,9 @@ nav a:hover::after {
 
 .github-stats-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  padding: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -366,13 +375,13 @@ nav a:hover::after {
 }
 
 .github-stats-card h4 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--primary-color);
   margin-bottom: 12px;
 }
 
 .github-stats-card p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-color);
   margin: 8px 0;
   display: flex;
@@ -383,6 +392,7 @@ nav a:hover::after {
 .github-stats-card.error {
   color: var(--accent-color);
 }
+
 .github-stats-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
@@ -399,11 +409,11 @@ nav a:hover::after {
 #about .hero {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 48px;
+  gap: 32px;
   align-items: center;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 48px;
+  padding: 32px;
   border-radius: 24px;
   box-shadow: var(--card-shadow);
   position: relative;
@@ -437,20 +447,20 @@ nav a:hover::after {
 }
 
 #about .hero-text h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 16px;
   color: var(--primary-color);
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #about .hero-text p {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--text-color);
   font-weight: 500;
 }
 
 #about h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 64px 0 32px;
   color: var(--primary-color);
   text-align: center;
@@ -469,7 +479,7 @@ nav a:hover::after {
 }
 
 #about p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   max-width: 900px;
   margin: 0 auto 24px;
   line-height: 2;
@@ -477,7 +487,7 @@ nav a:hover::after {
 
 /* Skills Section */
 #skills h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   text-align: center;
   margin-bottom: 64px;
@@ -485,9 +495,9 @@ nav a:hover::after {
 
 #skills .skill-section {
   background: var(--card-bg);
-  padding: 40px;
+  padding: 32px;
   border-radius: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
 }
@@ -499,7 +509,7 @@ nav a:hover::after {
 }
 
 #skills .skill-section h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--text-color);
   margin-bottom: 24px;
   position: relative;
@@ -521,7 +531,7 @@ nav a:hover::after {
 }
 
 #skills .skill-section li {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -545,28 +555,32 @@ nav a:hover::after {
 }
 
 /* Projects and Books */
-#projects, #books {
-  padding: 120px 24px;
+#projects,
+#books {
+  padding: 100px 16px;
   position: relative;
 }
 
-#projects h2, #books h2 {
-  font-size: 3rem;
+#projects h2,
+#books h2 {
+  font-size: 2.5rem;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
-.projects-grid, .book-container {
+.projects-grid,
+.book-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
-.project-item, .book-item {
+.project-item,
+.book-item {
   background: var(--card-bg);
   border-radius: 24px;
-  padding: 40px;
+  padding: 32px;
   text-align: center;
   box-shadow: var(--card-shadow);
   position: relative;
@@ -574,7 +588,8 @@ nav a:hover::after {
   transition: var(--transition);
 }
 
-.project-item::before, .book-item::before {
+.project-item::before,
+.book-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -586,29 +601,45 @@ nav a:hover::after {
   transition: var(--transition);
 }
 
-.project-item:hover::before, .book-item:hover::before {
+.project-item:hover::before,
+.book-item:hover::before {
   opacity: 1;
 }
 
-.project-item:hover, .book-item:hover {
+.project-item:hover,
+.book-item:hover {
   background: var(--card-bg-hover);
   transform: translateY(-15px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
 
-.project-icon, .book-icon {
+/* Project Icons */
+.project-icon {
   width: 100%;
-  max-width: 180px;
+  max-width: 160px;
   height: auto;
   border-radius: 16px;
   margin-bottom: 24px;
   transition: var(--transition);
+  display: block;
+  object-fit: contain;
 }
 
-.book-icon {
-  max-height: 450px;
-  object-fit: cover;
-  border: 3px solid var(--primary-color);
+/* Example project-specific icons (replace with actual icon paths) */
+.project-item.project-1 .project-icon {
+  content: url('/images/icon-project-1.png');
+}
+
+.project-item.project-2 .project-icon {
+  content: url('/images/icon-project-2.png');
+}
+
+.project-item.project-3 .project-icon {
+  content: url('/images/icon-project-3.png');
+}
+
+.project-item.project-4 .project-icon {
+  content: url('/images/icon-project-4.png');
 }
 
 .project-item:hover .project-icon {
@@ -616,27 +647,41 @@ nav a:hover::after {
   box-shadow: var(--border-glow);
 }
 
+.book-icon {
+  width: 100%;
+  max-width: 160px;
+  max-height: 400px;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  border-radius: 16px;
+  margin-bottom: 24px;
+  transition: var(--transition);
+}
+
 .book-item:hover .book-icon {
   transform: scale(1.1) rotate(3deg);
   box-shadow: var(--border-glow);
 }
 
-.project-item h3, .book-item h3 {
-  font-size: 2rem;
+.project-item h3,
+.book-item h3 {
+  font-size: 1.8rem;
   color: var(--text-color);
   margin-bottom: 20px;
 }
 
-.project-item p, .book-item p {
-  font-size: 1.1rem;
+.project-item p,
+.book-item p {
+  font-size: 1rem;
   color: var(--text-color);
   opacity: 0.85;
   line-height: 1.9;
 }
 
-.project-button, .book-button {
+.project-button,
+.book-button {
   display: inline-block;
-  padding: 16px 32px;
+  padding: 14px 28px;
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   color: #fff;
   border-radius: 50px;
@@ -648,7 +693,8 @@ nav a:hover::after {
   transition: var(--transition);
 }
 
-.project-button::before, .book-button::before {
+.project-button::before,
+.book-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -659,11 +705,13 @@ nav a:hover::after {
   transition: var(--transition);
 }
 
-.project-button:hover::before, .book-button:hover::before {
+.project-button:hover::before,
+.book-button:hover::before {
   left: 0;
 }
 
-.project-button:hover, .book-button:hover {
+.project-button:hover,
+.book-button:hover {
   transform: scale(1.1);
   box-shadow: var(--border-glow);
 }
@@ -672,28 +720,28 @@ nav a:hover::after {
 #samples {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 80px 24px;
+  padding: 80px 16px;
   border-radius: 24px;
   box-shadow: var(--card-shadow);
   position: relative;
 }
 
 #samples h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 .samples-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 .sample-item {
   background: var(--card-bg);
-  padding: 40px;
+  padding: 32px;
   border-radius: 16px;
   transition: var(--transition);
   position: relative;
@@ -706,13 +754,13 @@ nav a:hover::after {
 }
 
 .sample-item h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--primary-color);
   margin-bottom: 16px;
 }
 
 .sample-item p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-color);
   line-height: 1.9;
 }
@@ -720,7 +768,7 @@ nav a:hover::after {
 .sample-link {
   display: inline-block;
   padding: 12px 24px;
-  BACKGROUND: var(--primary-color);
+  background: var(--primary-color);
   color: #fff;
   border-radius: 50px;
   text-decoration: none;
@@ -736,15 +784,15 @@ nav a:hover::after {
 
 /* Testimonials */
 #testimonials {
-  padding: 120px 24px;
+  padding: 100px 16px;
   position: relative;
 }
 
 #testimonials h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 #testimonials-container {
@@ -766,18 +814,18 @@ nav a:hover::after {
   width: max-content;
   transition: transform 0.6s ease-in-out;
   will-change: transform;
-  gap: 24px;
+  gap: 20px;
 }
 
 .testimonial {
   flex: 0 0 100%;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 48px;
+  padding: 32px;
   border-radius: 24px;
   text-align: center;
   box-shadow: var(--card-shadow);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 2;
   color: var(--text-color);
   box-sizing: border-box;
@@ -785,13 +833,13 @@ nav a:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 200px;
+  min-height: 180px;
   width: 100%;
 }
 
 .testimonial p {
   margin: 0;
-  padding: 0 24px;
+  padding: 0 16px;
   position: relative;
   z-index: 1;
   max-width: 600px;
@@ -800,7 +848,7 @@ nav a:hover::after {
 .testimonial::before,
 .testimonial::after {
   font-family: 'Arial', sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   position: absolute;
   opacity: 0.4;
@@ -809,30 +857,30 @@ nav a:hover::after {
 
 .testimonial::before {
   content: '"';
-  top: 24px;
-  left: 24px;
+  top: 16px;
+  left: 16px;
 }
 
 .testimonial::after {
   content: '"';
-  bottom: 24px;
-  right: 24px;
+  bottom: 16px;
+  right: 16px;
 }
 
 #testimonial-nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 20px;
+  margin-top: 32px;
 }
 
 #testimonial-nav button {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   color: #fff;
   border: none;
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
@@ -852,14 +900,14 @@ nav a:hover::after {
 
 /* Contact */
 #contact {
-  padding: 120px 24px;
+  padding: 100px 16px;
 }
 
 #contact h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 #contact form {
@@ -867,7 +915,7 @@ nav a:hover::after {
   margin: 0 auto;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 48px;
+  padding: 32px;
   border-radius: 24px;
   box-shadow: var(--card-shadow);
 }
@@ -875,18 +923,18 @@ nav a:hover::after {
 #contact form input,
 #contact form textarea {
   width: 100%;
-  padding: 20px;
-  margin-bottom: 24px;
+  padding: 16px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.15);
   color: var(--text-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: var(--transition);
 }
 
 #contact form textarea {
-  min-height: 200px;
+  min-height: 160px;
 }
 
 #contact form input:focus,
@@ -900,9 +948,9 @@ nav a:hover::after {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   color: #fff;
   border: none;
-  padding: 20px 40px;
+  padding: 16px 32px;
   border-radius: 50px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
@@ -916,25 +964,25 @@ nav a:hover::after {
 
 /* Social Links */
 #social-links {
-  padding: 80px 24px;
+  padding: 80px 16px;
   text-align: center;
 }
 
 #social-links h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 32px;
 }
 
 .social-icons a {
   color: var(--text-color);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   transition: var(--transition);
 }
 
@@ -948,9 +996,9 @@ nav a:hover::after {
 footer {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 48px 24px;
+  padding: 32px 16px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-color);
   position: relative;
 }
@@ -965,8 +1013,8 @@ footer {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .footer-menu a {
@@ -994,13 +1042,13 @@ footer {
 /* Visitor Counter */
 #visitor-container {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 16px;
+  right: 16px;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  padding: 16px 24px;
+  padding: 12px 20px;
   border-radius: 16px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: var(--card-shadow);
   display: flex;
@@ -1015,8 +1063,8 @@ footer {
 }
 
 #visitor-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: var(--primary-color);
   border-radius: 50%;
   box-shadow: var(--border-glow);
@@ -1029,7 +1077,7 @@ footer {
   top: 0;
   left: 0;
   width: 0;
-  height: 6px;
+  height: 5px;
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
   z-index: 9999;
   transition: width 0.3s ease;
@@ -1038,7 +1086,7 @@ footer {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -1047,7 +1095,7 @@ footer {
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  border-radius: 6px;
+  border-radius: 5px;
   box-shadow: var(--border-glow);
 }
 
@@ -1057,28 +1105,68 @@ footer {
 
 /* Animations */
 @keyframes pulse-bg {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes rotate-bg {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: var(--border-glow); }
-  50% { transform: scale(1.2); box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); }
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: var(--border-glow);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  }
 }
 
 @keyframes pulse-heart {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInNav {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive Design */
@@ -1092,12 +1180,14 @@ footer {
     margin: 0 auto;
   }
 
-  .projects-grid, .book-container, .github-stats-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .projects-grid,
+  .book-container,
+  .github-stats-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   nav ul {
-    gap: 12px;
+    gap: 10px;
   }
 
   nav a {
@@ -1132,61 +1222,109 @@ footer {
     top: 60px;
     left: 0;
     width: 100%;
-    background: var(--glass-bg);
+    background: rgba(30, 30, 30, var(--glass-opacity));
     backdrop-filter: var(--glass-blur);
     padding: 16px;
     box-shadow: var(--card-shadow);
     z-index: 1998;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+  }
+
+  .dark-mode nav {
+    background: rgba(255, 255, 255, var(--glass-opacity));
   }
 
   nav.active {
     display: block;
+    transform: translateY(0);
+    animation: slideInNav 0.4s ease forwards;
   }
 
   nav ul {
+    background: transparent;
     flex-direction: column;
     gap: 16px;
     align-items: center;
     margin: 0;
   }
 
+  nav a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: var(--transition);
+  }
+
+  .dark-mode nav a {
+    color: #000000;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  nav a:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    text-shadow: none;
+  }
+
   .menu-toggle {
     display: block;
+    order: 3;
   }
 
   .header-right {
     gap: 8px;
+    order: 2;
   }
 
   .hire-me {
     padding: 8px 16px;
     font-size: 0.85rem;
+    order: 1;
   }
 
   .toggle-theme {
     width: 36px;
     height: 36px;
     font-size: 1.2rem;
+    order: 2;
   }
 
   .hire-me-dropdown {
-    top: 60px;
+    top: 80px;
     right: 16px;
-    width: 90%;
-    max-width: 280px;
+    width: calc(100% - 32px);
+    max-width: 300px;
+    background: rgba(30, 30, 30, var(--glass-opacity));
+    backdrop-filter: var(--glass-blur);
+    padding: 12px 0;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .dark-mode .hire-me-dropdown {
+    background: rgba(255, 255, 255, var(--glass-opacity));
   }
 
   .github-stats-container {
     grid-template-columns: 1fr;
-    padding: 16px;
+    max-width: 90%;
+    padding: 16px 0;
+    justify-items: center;
   }
 
   .github-stats-card {
-    max-width: 100%;
+    max-width: 320px;
   }
 
-  #testimonials-container {
-    max-width: 100%;
+  #stats {
+    padding: 40px 16px;
+    min-height: auto;
+    justify-content: flex-start;
   }
 
   .testimonial {
@@ -1204,29 +1342,54 @@ footer {
     height: 40px;
   }
 
+  #about .hero {
+    padding: 24px;
+  }
+
   #about .hero img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 
   #about .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  #about .hero-text p {
+    font-size: 1.1rem;
   }
 
   #skills .skill-section {
     padding: 24px;
   }
 
-  .project-item, .book-item {
+  .project-item,
+  .book-item {
     padding: 24px;
   }
 
+  .project-icon,
   .book-icon {
-    max-height: 350px;
+    max-width: 120px;
+  }
+
+  .book-icon {
+    max-height: 300px;
   }
 
   #contact form {
     padding: 24px;
+  }
+
+  #contact form input,
+  #contact form textarea {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  #contact form button {
+    padding: 14px 28px;
+    font-size: 1rem;
   }
 
   .hire-me {
@@ -1245,21 +1408,34 @@ footer {
   }
 
   .hire-me-dropdown {
-    top: 55px;
+    top: 70px;
     right: 12px;
+    width: calc(100% - 24px);
+    max-width: 280px;
+  }
+
+  .hire-option {
+    padding: 12px 20px;
+    font-size: 0.95rem;
   }
 
   .github-stats-container {
-    padding: 12px;
+    padding: 12px 0;
   }
 
   .github-stats-card {
     padding: 12px;
     border-radius: 12px;
+    max-width: 280px;
+  }
+
+  #stats h2 {
+    font-size: 2rem;
+    margin-bottom: 24px;
   }
 
   .testimonial {
-    padding: 32px;
+    padding: 24px;
     font-size: 1rem;
     min-height: 120px;
   }
@@ -1270,13 +1446,25 @@ footer {
 
   .testimonial::before,
   .testimonial::after {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  #visitor-container {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  #visitor-icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }

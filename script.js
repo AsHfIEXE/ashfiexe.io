@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // GitHub Personal Access Token (replace with your token)
-        const token = "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";
+        const token = "ithub_pat_11A5SP2IQ0moKOCN8JM6Xj_YTY4QDdU0UF77e0qtPeoj7kki1EqfgBhcoOZt9W7d9EXXPANH7MC44RkCOM";
         const headers = {
             Authorization: `token ${token}`,
             Accept: "application/vnd.github.v3+json"
@@ -368,12 +368,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector("nav");
+    const nav = document.querySelector("nav");
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+    if (menuToggle && nav) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+
+        menuToggle.addEventListener("click", () => {
+            const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+            nav.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", !isExpanded);
+            menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+            menuToggle.querySelector("i").classList.toggle("fa-bars", isExpanded);
+            menuToggle.querySelector("i").classList.toggle("fa-times", !isExpanded);
+        });
+
+        // Close menu when a nav link is clicked
         document.querySelectorAll("nav a").forEach((link) => {
-            link.addEventListener("click", () => navLinks.classList.remove("active"));
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.querySelector("i").classList.add("fa-bars");
+                menuToggle.querySelector("i").classList.remove("fa-times");
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!nav.contains(event.target) && !menuToggle.contains(event.target) && nav.classList.contains("active")) {
+                nav.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.querySelector("i").classList.add("fa-bars");
+                menuToggle.querySelector("i").classList.remove("fa-times");
+            }
         });
     }
 
