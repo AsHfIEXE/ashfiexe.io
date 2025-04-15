@@ -14,7 +14,7 @@
     <!-- Open Graph (for Social Media) -->
     <meta property="og:title" content="Salehin Ashfi | Cybersecurity Researcher & Sci-Fi Writer">
     <meta property="og:description" content="Discover cybersecurity insights, ethical hacking research, and thought-provoking sci-fi narratives.">
-    <meta property="og:image" content="http://www.salehinashfi.rf.gd/logo.webp">
+    <meta property="og:image" content="http://www.salehinashfi.rf.gd/images/logo.png">
     <meta property="og:url" content="http://www.salehinashfi.rf.gd/">
     <meta property="og:type" content="website">
 
@@ -22,10 +22,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Salehin Ashfi | Cybersecurity & Sci-Fi Writer">
     <meta name="twitter:description" content="Unravel the world of cybersecurity and sci-fi storytelling with Salehin Ashfi. Explore research, books, and technology.">
-    <meta name="twitter:image" content="http://www.salehinashfi.rf.gd/thumbnail.webp">
+    <meta name="twitter:image" content="http://www.salehinashfi.rf.gd/images/IMG_20250130_130338_405[1].webp">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="http://www.salehinashfi.rf.gd/logo.png">
+    <link rel="icon" type="image/png" href="../images/logo.png">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
@@ -44,36 +44,37 @@
 </head>
 
 <body>
-    <body>
-        <body>
-            <body>
-                <header>
-                    <div class="logo">
-                        <a href="index.html"><img src="logo.png" alt="Salehin Ashfi Logo"></a>
-                    </div>
-                    <span class="menu-toggle"><i class="fas fa-bars"></i></span>
-                    <nav>
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                            <li><a href="#books">Books</a></li>
-                            <li><a href="#testimonials">Testimonials</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </nav>
-                </header>
-            
-                <!-- Theme Toggle Button (Fixed in bottom-left) -->
-                <button class="toggle-theme"><i class="fas fa-sun"></i></button>
-            
-        
-            </body>
-    
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../images/logo.png" alt="Salehin Ashfi Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <button class="toggle-theme" aria-label="Toggle dark mode"><i class="fas fa-sun"></i></button>
+            <button class="hire-me" aria-label="Hire Me Options">Hire Me</button>
+        </div>
+        <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+    </header>
+
+    <div class="hire-me-dropdown">
+        <a href="/cdn-cgi/l/email-protection#15667479747d7c7b2574667d737c557278747c793b767a78" class="hire-option"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://wa.me/01734030695" target="_blank" class="hire-option"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://www.fiverr.com/salehinashfi" target="_blank" class="hire-option"><i class="fab fa-fiverr"></i> Fiverr</a>
+    </div>
+
     <main>
         <section id="about">
             <div class="hero">
-                <img src="IMG_20250130_130338_405[1].webp" alt="Salehin Ashfi Profile Picture">
+                <img src="../images/IMG_20250130_130338_405[1].webp" alt="Salehin Ashfi Profile Picture">
                 <div class="hero-text">
                     <h1>Salehin Ashfi</h1>
                     <p>Writer | Cybersecurity Researcher</p>
@@ -110,11 +111,11 @@
             <div class="skill-section">
                 <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Programming & Scripting – Python, JavaScript, Bash</li>
+                    <li><i class="fas fa-check-circle"></i> Programming & Scripting – Python, Java JavaScript, Bash</li>
                     <li><i class="fas fa-check-circle"></i> Automation & Web Scraping – Selenium, BeautifulSoup, n8n</li>
                     <li><i class="fas fa-check-circle"></i> AI & Machine Learning – TTS, Speech Synthesis</li>
                     <li><i class="fas fa-check-circle"></i> Cloud & DevOps – Linux, Docker, CI/CD, Cloud Security</li>
-                    <li><i class="fas fa-check-circle"></i> Web Development</li> <!-- Fixed typo: "Devolopment" → "Development" -->
+                    <li><i class="fas fa-check-circle"></i> Web Development</li>
                 </ul>
             </div>
             <div class="skill-section">
@@ -129,32 +130,36 @@
             <div class="blob"></div>
         </section>
 
+        <section id="stats">
+            <h2>My GitHub Stats</h2>
+            <div class="github-stats-container">
+                <!-- Custom stats will be appended by JS -->
+            </div>
+        </section>
+
         <section id="projects">
             <h2>Projects</h2>
-            <div id="github-stats">
-                <p>Loading GitHub Stats...</p>
-            </div>
             <div class="projects-grid">
                 <div class="project-item">
-                    <img src="placeholder-project-icon.png" alt="Spotify Music Downloader Icon" class="project-icon">
+                    <img src="../images/placeholder-project-icon.png" alt="Spotify Music Downloader Icon" class="project-icon">
                     <h3>Spotify Music Downloader</h3>
                     <p>Download your favorite music and save it locally</p>
                     <a href="https://github.com/ashfiexe/spotify-music-downloader" target="_blank" class="project-button">View on GitHub</a>
                 </div>
                 <div class="project-item">
-                    <img src="placeholder-project-icon.png" alt="SpyAppClient (Firebase) Icon" class="project-icon">
+                    <img src="../images/placeholder-project-icon.png" alt="SpyAppClient (Firebase) Icon" class="project-icon">
                     <h3>SpyAppClient (Firebase)</h3>
                     <p>Monitor what's happening with Firebase</p>
                     <a href="https://github.com/AsHfIEXE/SpyAppClient" target="_blank" class="project-button">View on GitHub</a>
                 </div>
                 <div class="project-item">
-                    <img src="placeholder-project-icon.png" alt="YouTube-DL Fork Icon" class="project-icon">
+                    <img src="../images/placeholder-project-icon.png" alt="YouTube-DL Fork Icon" class="project-icon">
                     <h3>YouTube-DL Fork</h3>
                     <p>Download any YouTube data</p>
                     <a href="https://github.com/AsHfIEXE/youtube-dl" target="_blank" class="project-button">View on GitHub</a>
                 </div>
                 <div class="project-item">
-                    <img src="placeholder-project-icon.png" alt="Spark Icon" class="project-icon">
+                    <img src="../images/placeholder-project-icon.png" alt="Spark Icon" class="project-icon">
                     <h3>Spark</h3>
                     <p>✨Spark is a web-based, cross-platform, full-featured Remote Administration Tool (RAT) written in Go that allows you to control all your devices anywhere.</p>
                     <a href="https://github.com/AsHfIEXE/Spark" target="_blank" class="project-button">View on GitHub</a>
@@ -167,28 +172,65 @@
             <h2>📚 Books</h2>
             <div class="book-container">
                 <div class="book-item">
-                    <img src="book_cover_1.png" alt="ChronoGenesis: The Shattered Future Cover" class="book-icon">
+                    <img src="../images/book_cover_1.png" alt="ChronoGenesis: The Shattered Future Cover" class="book-icon">
                     <h3>ChronoGenesis: The Shattered Future</h3>
                     <p>A sci-fi thriller exploring time manipulation, hidden conspiracies, and fate.</p>
                     <a href="https://books2read.com/u/mZ8DVB" target="_blank" class="book-button">View on Store</a>
                 </div>
                 <div class="book-item">
-                    <img src="book_cover_2.png" alt="ChronoGenesis: Echoes of the Architect Cover" class="book-icon">
+                    <img src="../images/book_cover_2.png" alt="ChronoGenesis: Echoes of the Architect Cover" class="book-icon">
                     <h3>ChronoGenesis: Echoes of the Architect</h3>
                     <p>A high-stakes sequel unraveling deeper mysteries of time.</p>
                     <a href="https://books2read.com/u/brEZee" target="_blank" class="book-button">View on Store</a>
                 </div>
                 <div class="book-item">
-                    <img src="book_cover_3.jpg" alt="Shadow Behind the Eternity Cover" class="book-icon">
+                    <img src="../images/book_cover_3.jpg" alt="Shadow Behind the Eternity Cover" class="book-icon">
                     <h3>Shadow Behind the Eternity</h3>
                     <p>A mind-bending exploration of the digital afterlife and the boundaries of consciousness.</p>
                     <a href="https://books2read.com/u/mdEBMX" target="_blank" class="book-button">View on Store</a>
                 </div>
                 <div class="book-item">
-                    <img src="book_cover_4.jpg" alt="In the Quiet Moments Cover" class="book-icon">
+                    <img src="../images/book_cover_4.jpg" alt="In the Quiet Moments Cover" class="book-icon">
                     <h3>In the Quiet Moments</h3>
                     <p>A reflective non-fiction work on introspection, emotions, and self-discovery.</p>
                     <a href="https://books2read.com/u/49KQ0W" target="_blank" class="book-button">View on Store</a>
+                </div>
+                <div class="book-item">
+                    <img src="../images/book_cover_5.png" alt="Ink & Rain Cover" class="book-icon">
+                    <h3>Ink & Rain</h3>
+                    <p>A poignant tale of a Tokyo student and a mysterious artist finding solace in rain, art, and fleeting love, until a storm reveals a heart-wrenching truth.</p>
+                    <a href="https://books2read.com/u/mlxA9q" target="_blank" class="book-button">View on Store</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="samples">
+            <h2>📖 Book Samples</h2>
+            <div class="samples-container">
+                <div class="sample-item">
+                    <h3>ChronoGenesis: The Shattered Future</h3>
+                    <p>Preview the opening chaos of a fractured timeline.</p>
+                    <a href="../sample/ChronoGenesis_ShatteredFuture_Sample.pdf" target="_blank" class="sample-link">Read Sample</a>
+                </div>
+                <div class="sample-item">
+                    <h3>ChronoGenesis: Echoes of the Architect</h3>
+                    <p>A glimpse into the Architect’s hidden design.</p>
+                    <a href="../sample/ChronoGenesis_EchoesArchitect_Sample.pdf" target="_blank" class="sample-link">Read Sample</a>
+                </div>
+                <div class="sample-item">
+                    <h3>Shadow Behind the Eternity</h3>
+                    <p>Step into the digital abyss of consciousness.</p>
+                    <a href="../sample/Shadow_Eternity_Sample.pdf" target="_blank" class="sample-link">Read Sample</a>
+                </div>
+                <div class="sample-item">
+                    <h3>In the Quiet Moments</h3>
+                    <p>A taste of silence and self-reflection.</p>
+                    <a href="../sample/Quiet_Moments_Sample.pdf" target="_blank" class="sample-link">Read Sample</a>
+                </div>
+                <div class="sample-item">
+                    <h3>Ink & Rain</h3>
+                    <p>Feel the rain-soaked solitude of Tokyo.</p>
+                    <a href="../sample/Ink_Rain_Sample.pdf" target="_blank" class="sample-link">Read Sample</a>
                 </div>
             </div>
         </section>
@@ -219,6 +261,7 @@
                 <button type="button" aria-label="Next Testimonial">Next</button>
             </div>
         </section>
+
         <section id="contact">
             <h2>Contact</h2>
             <form id="contactForm">
@@ -245,7 +288,7 @@
 
     <footer>
         <div class="footer-container">
-            <p>© 2025 Salehin Ashfi | <a href="mailto:salahin0ashfi@gmail.com">Contact Me</a></p>
+            <p>© 2025 Salehin Ashfi | <a href="/cdn-cgi/l/email-protection#4774262b262f2e297726342f212e07202a262e2b6924282a">Contact Me</a></p>
             <div class="footer-text">
                 <p>Made with <span class="heart">❤</span> using HTML, CSS, and JavaScript</p>
             </div>
@@ -260,6 +303,7 @@
     <div id="progress-bar"></div>
 
     <!-- Progress Bar Script -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         window.onscroll = function () {
             let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
